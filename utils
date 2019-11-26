@@ -1,0 +1,18 @@
+#!/bin/bash
+
+timespec () {
+    if [[ $TIMESPEC == "" ]]; then
+        echo "@$(date +%s)"
+    else
+        echo "$TIMESPEC"
+    fi
+}
+
+util_dayofyear () {
+    date +%j -d "$(timespec)"
+}
+
+util_isleapyear () {
+    YEAR=$(date +%Y -d "$(timespec)")
+    [[ $((YEAR % 4)) -eq 0 ]] && ([[ $((YEAR % 400)) -eq 0 ]] || [[ $((YEAR % 100)) -ne 100 ]])
+}
