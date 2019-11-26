@@ -1,0 +1,35 @@
+#!/bin/bash
+
+month () {
+    local DAY=`util_dayofyear`
+    ! util_isleapyear
+    local YEAR=$?
+    if [[ $DAY -le $((28 * 6 + YEAR)) ]]; then
+        local MONTH=$((1 + (DAY / 28)))
+        local MONTH=$((MONTH > 6 ? 6 : MONTH))
+    else
+        local DAY=$((DAY - YEAR))
+        local MONTH=$((1 + (DAY / 28)))
+        local MONTH=$((MONTH > 13 ? 13 : MONTH))
+    fi
+    echo $MONTH
+}
+
+day () {
+    local DAY=`util_dayofyear`
+    local MONTH=`month`
+    if util_isleapyear && [[ $MONTH -gt 6 ]]; then
+        local DAY=$((DAY - 1))
+    fi
+    local DAY=$((DAY - (MONTH - 1) * 28))
+    echo $DAY
+}
+
+dayofweek () {
+    local MDAY=`day`
+    if [[ $MDAY -eq 29 ]]; then
+        echo 8
+    else
+        echo $((MDAY % 7 ? MDAY % 7 : 7))
+    fi
+}
