@@ -9,10 +9,10 @@ timespec () {
 }
 
 util_dayofyear () {
-    date +%j -d "$(timespec)"
+    date +%_j -d "$(timespec)"
 }
 
 util_isleapyear () {
-    YEAR=$(date +%Y -d "$(timespec)")
+    YEAR=$(date +%_Y -d "$(timespec)")
     [[ $((YEAR % 4)) -eq 0 ]] && ([[ $((YEAR % 400)) -eq 0 ]] || [[ $((YEAR % 100)) -ne 100 ]])
 }
