@@ -60,3 +60,5 @@ the time 15 minutes ago. Use it thus:
 $ ./alttime alwayslate
 2019/12/22 (1), 09:56:16
 ```
+
+Anyone following this alternate time would be, obviously enough, always late.
