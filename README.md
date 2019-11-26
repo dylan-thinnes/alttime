@@ -50,3 +50,13 @@ intfixed. Use it thus:
 $ ./alttime intfixed # Prints the full time, which will only have the date changed
 2019/12/22 (1), 10:11:16
 ```
+
+## AlwaysLate Time
+
+I've created a sample spec of AlwaysLate Time in alwayslate. It always prints
+the time 15 minutes ago. Use it thus:
+
+```
+$ ./alttime alwayslate
+2019/12/22 (1), 09:56:16
+```
