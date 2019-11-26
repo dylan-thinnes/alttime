@@ -1,0 +1,66 @@
+#!/bin/bash
+
+source ./utils
+source $1
+
+altyear () {
+    if type year 2>/dev/null >/dev/null; then
+        year $@
+    else
+        date +%Y -d "$(timespec)"
+    fi
+}
+
+altmonth () {
+    if type month 2>/dev/null >/dev/null; then
+        month $@
+    else
+        date +%m -d "$(timespec)"
+    fi
+}
+
+altday () {
+    if type day 2>/dev/null >/dev/null; then
+        day $@
+    else
+        date +%d -d "$(timespec)"
+    fi
+}
+
+altdayofweek () {
+    if type dayofweek 2>/dev/null >/dev/null; then
+        dayofweek $@
+    else
+        date +%u -d "$(timespec)"
+    fi
+}
+
+althour () {
+    if type hour 2>/dev/null >/dev/null; then
+        hour $@
+    else
+        date +%H -d "$(timespec)"
+    fi
+}
+
+altminute () {
+    if type minute 2>/dev/null >/dev/null; then
+        minute $@
+    else
+        date +%M -d "$(timespec)"
+    fi
+}
+
+altsecond () {
+    if type second 2>/dev/null >/dev/null; then
+        second $@
+    else
+        date +%S -d "$(timespec)"
+    fi
+}
+
+if [[ $# -gt 1 ]]; then
+    ${@:2}
+else
+    echo "$(altyear)/$(altmonth)/$(altday) ($(altdayofweek)), $(althour):$(altminute):$(altsecond)"
+fi
