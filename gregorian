@@ -1,0 +1,30 @@
+#!/bin/bash
+
+year () {
+    date +%Y -d "$(timespec)"
+}
+
+month () {
+    date +%m -d "$(timespec)"
+}
+
+day () {
+    date +%d -d "$(timespec)"
+}
+
+dayofweek () {
+    date +%u -d "$(timespec)"
+}
+
+hour () {
+    date +%H -d "$(timespec)"
+}
+
+minute () {
+    date +%M -d "$(timespec)"
+}
+
+second () {
+    date +%S -d "$(timespec)"
+}
+
