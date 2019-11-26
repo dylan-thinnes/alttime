@@ -1,0 +1,4 @@
+#!/bin/bash
+
+TIMESPEC="@$((`date +%s -d $(timespec)` - (15 * 60)))"
+export TIMESPEC
